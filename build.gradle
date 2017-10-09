@@ -14,13 +14,13 @@ apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 
 sourceSets {
-     main {
-      java {
-       srcDirs = ['src/main/java/']
-       srcDir 'support'
-      }
-     }
+    main {
+        java {
+            srcDirs = ['src/main/java/']
+            srcDir 'support'
+        }
     }
+}
 
 // In this section you declare where to find the dependencies of your project
 repositories {
