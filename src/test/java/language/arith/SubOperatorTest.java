@@ -25,7 +25,8 @@ public class SubOperatorTest {
     }
 
     @Test(timeout = 5000)
-    public void testPerformOperation() {
+    public void testPerformOperation()
+            throws ExtremeOperandException {
         operator.setOperand(0, op0);
         operator.setOperand(1, op1);
 
@@ -56,7 +57,8 @@ public class SubOperatorTest {
     }
 
     @Test(timeout = 5000, expected = IllegalStateException.class)
-    public void testIllegalStateExceptionPerform() {
+    public void testIllegalStateExceptionPerform()
+            throws ExtremeOperandException {
         operator.performOperation();
         fail("Operator should not compute when all arguments have not been set.");
     }

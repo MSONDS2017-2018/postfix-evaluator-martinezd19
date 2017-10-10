@@ -4,9 +4,9 @@ import language.BinaryOperator;
 import language.Operand;
 
 /**
- * The {@code DivOperator} is an operator that performs division on two integers.
+ * The {@code ExponentOperator} is an operator that performs exponentiation on two integers.
  */
-public class DivOperator
+public class ExponentOperator
         extends BinaryOperator<Integer> {
 
     /**
@@ -21,7 +21,7 @@ public class DivOperator
             throw new IllegalStateException(
                     "Could not perform operation prior to operands being set.");
         }
-        Integer result = op0.getValue() / op1.getValue();
+        Integer result = (int) Math.pow(op0.getValue(), op1.getValue());
 
         if (result == Integer.MAX_VALUE) {
             throw new ExtremeOperandException();
@@ -30,12 +30,4 @@ public class DivOperator
         return new Operand<Integer>(result);
     }
 
-    @Override
-    public final void setOperand(final int i, final Operand<Integer> operand) {
-        if (i == 1 && operand.getValue() == 0) {
-            throw new IllegalStateException(
-                    "Op1 of DivOperator cannot be set to 0");
-        }
-        super.setOperand(i, operand);
-    }
 }

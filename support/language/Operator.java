@@ -1,5 +1,7 @@
 package language;
 
+import language.arith.ExtremeOperandException;
+
 /**
  * An {@link Operator} is capable of performing an operation on some number of {@link Operand}s.
  *
@@ -26,7 +28,8 @@ public interface Operator<T> {
      *
      * @throws IllegalStateException if the required {@link Operand}s were not set.
      */
-    public Operand<T> performOperation();
+    public Operand<T> performOperation()
+            throws ExtremeOperandException;
 
     /**
      * <p>Sets the specified {@link Operand}.</p> <p><b>Note</b>: {@link Operand}s positions are

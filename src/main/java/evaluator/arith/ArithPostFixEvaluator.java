@@ -4,6 +4,7 @@ import evaluator.IllegalPostFixExpressionException;
 import evaluator.PostFixEvaluator;
 import language.Operand;
 import language.Operator;
+import language.arith.ExtremeOperandException;
 import parser.arith.ArithPostFixParser;
 import stack.LinkedStack;
 import stack.StackInterface;
@@ -54,7 +55,14 @@ public class ArithPostFixEvaluator
                         op.setOperand(i, stack.pop());
                     }
 
-                    stack.push(op.performOperation());
+                    try {
+                        stack.push(op.performOperation());
+                    } catch (ExtremeOperandException e) {
+                        System.out.println("Operands too large; result of operation totaled over " +
+                                "Integer.MAX_VALUE");
+                        return null;
+                    }
+
                     break;
                 default:
                     throw new IllegalStateException(

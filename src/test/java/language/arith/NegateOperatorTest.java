@@ -25,7 +25,8 @@ public class NegateOperatorTest {
     }
 
     @Test(timeout = 5000)
-    public void testPerformOperation() {
+    public void testPerformOperation()
+            throws ExtremeOperandException {
         operator.setOperand(0, op0);
 
         Operand<Integer> result = operator.performOperation();
@@ -34,7 +35,8 @@ public class NegateOperatorTest {
     }
 
     @Test(timeout = 5000)
-    public void testPerformOperationNegative() {
+    public void testPerformOperationNegative()
+            throws ExtremeOperandException {
         operator.setOperand(0, new Operand<Integer>(-7));
 
         Operand<Integer> result = operator.performOperation();
@@ -56,7 +58,8 @@ public class NegateOperatorTest {
     }
 
     @Test(timeout = 5000, expected = IllegalStateException.class)
-    public void testIllegalStateExceptionPerform() {
+    public void testIllegalStateExceptionPerform()
+            throws ExtremeOperandException {
         operator.performOperation();
         fail("Operator should not compute when all arguments have not been set.");
     }
