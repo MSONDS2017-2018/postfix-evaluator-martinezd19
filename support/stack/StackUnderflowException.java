@@ -7,15 +7,15 @@ package stack;
  * @author jcollard, jddevaug
  */
 public class StackUnderflowException
-        extends RuntimeException {
+    extends RuntimeException {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-    public StackUnderflowException() {
-        super();
-    }
+  public StackUnderflowException() {
+    super();
+  }
 
-    public StackUnderflowException(String message) {
-        super(message);
-    }
+  public StackUnderflowException(String message) {
+    super(message);
+  }
 }

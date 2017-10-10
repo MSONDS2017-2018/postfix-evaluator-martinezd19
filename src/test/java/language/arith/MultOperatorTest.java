@@ -10,50 +10,50 @@ import static org.junit.Assert.fail;
 
 public class MultOperatorTest {
 
-    Operator<Integer> operator;
-    Operand<Integer>  op0;
-    Operand<Integer>  op1;
+  Operator<Integer> operator;
+  Operand<Integer>  op0;
+  Operand<Integer>  op1;
 
-    /**
-     * Runs before each test.
-     */
-    @Before
-    public void setup() {
-        operator = new MultOperator();
-        op0 = new Operand<Integer>(5);
-        op1 = new Operand<Integer>(7);
-    }
+  /**
+   * Runs before each test.
+   */
+  @Before
+  public void setup() {
+    operator = new MultOperator();
+    op0 = new Operand<Integer>(5);
+    op1 = new Operand<Integer>(7);
+  }
 
-    @Test(timeout = 5000)
-    public void testPerformOperation()
-            throws ExtremeOperandException {
-        operator.setOperand(0, op0);
-        operator.setOperand(1, op1);
+  @Test(timeout = 5000)
+  public void testPerformOperation()
+      throws ExtremeOperandException {
+    operator.setOperand(0, op0);
+    operator.setOperand(1, op1);
 
-        Operand<Integer> result = operator.performOperation();
-        int              value  = result.getValue();
-        assertEquals("Operator applied to 5 and 7 should produce 35.", 35,
-                value);
-    }
+    Operand<Integer> result = operator.performOperation();
+    int              value  = result.getValue();
+    assertEquals("Operator applied to 5 and 7 should produce 35.", 35,
+        value);
+  }
 
-    @Test(timeout = 5000, expected = IllegalStateException.class)
-    public void testIllegalStateException() {
-        operator.setOperand(0, new Operand<Integer>(5));
-        operator.setOperand(0, new Operand<Integer>(12));
-        fail("Operator should not allow the same operand position to be set more than once");
-    }
+  @Test(timeout = 5000, expected = IllegalStateException.class)
+  public void testIllegalStateException() {
+    operator.setOperand(0, new Operand<Integer>(5));
+    operator.setOperand(0, new Operand<Integer>(12));
+    fail("Operator should not allow the same operand position to be set more than once");
+  }
 
-    @Test(timeout = 5000, expected = IllegalStateException.class)
-    public void testIllegalStateExceptionPerform()
-            throws ExtremeOperandException {
-        operator.performOperation();
-        fail("Operator should not compute when all arguments have not been set.");
-    }
+  @Test(timeout = 5000, expected = IllegalStateException.class)
+  public void testIllegalStateExceptionPerform()
+      throws ExtremeOperandException {
+    operator.performOperation();
+    fail("Operator should not compute when all arguments have not been set.");
+  }
 
-    @Test(timeout = 5000, expected = NullPointerException.class)
-    public void testNullArgumentException() {
-        operator.setOperand(0, null);
-        fail("Operator should not allow null arguments");
-    }
+  @Test(timeout = 5000, expected = NullPointerException.class)
+  public void testNullArgumentException() {
+    operator.setOperand(0, null);
+    fail("Operator should not allow null arguments");
+  }
 
 }

@@ -2,8 +2,6 @@ package parser.arith;
 
 import parser.ExpressionParser;
 
-import java.util.Scanner;
-
 /**
  * <p> An {@code ArithPostFixParser} is a post fix parser for arithmetic expressions. </p> <p> You
  * shouldn't worry about how this class is implemented but you should be aware of its usage. </p>
@@ -36,33 +34,18 @@ import java.util.Scanner;
  *
  * @author jcollard, jddevaug
  */
-public class ArithPostFixParser
+public class ArithInFixParser
     extends AbstractExpressionParser
     implements ExpressionParser<Integer> {
 
-  public ArithPostFixParser(String exp) {
+  public ArithInFixParser(String exp) {
     super(exp);
   }
 
   @Override
   protected boolean isParseable(String expr) {
-    Scanner s = new Scanner(expr);
-    while (s.hasNext()) {
-      // If we find an integer, we are good.
-      if (s.hasNextInt()) {
-        s.nextInt();
-        continue;
-      }
-      String token = s.next();
-      // If we find a string that is not an operator
-      // return false
-      if (!operators.containsKey(token)) {
-        s.close();
-        return false;
-      }
-    }
-    s.close();
-    // If we make it to the end of the expression we are good
+    //In-fix expressions are always parsable, whether or not the expression is valid is
+    // determined in the evaluator
     return true;
   }
 }
