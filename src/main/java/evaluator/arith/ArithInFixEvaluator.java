@@ -11,6 +11,9 @@ import stack.StackInterface;
 
 /**
  * An {@link ArithPostFixEvaluator} is a in fix evaluator over simple arithmetic expressions.
+ * The {@link ArithPostFixEvaluator} does not evaluate via normal PEMDAS. While operator
+ * precedence does apply, successive operators with identical precedence are evaluated <b>from
+ * right to left.</b>
  */
 public class ArithInFixEvaluator
     implements Expression<Integer> {

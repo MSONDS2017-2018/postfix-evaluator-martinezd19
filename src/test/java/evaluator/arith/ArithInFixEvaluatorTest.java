@@ -94,7 +94,7 @@ public class ArithInFixEvaluatorTest {
     assertEquals(Integer.valueOf(1), result);
 
     result = evaluator.evaluate("1 ^ 3 * 5 ^ 2 - 8 + 4");
-    assertEquals(Integer.valueOf(71), result);
+    assertEquals(Integer.valueOf(13), result);
   }
 
   @Test(timeout = 5000, expected = IllegalPostFixExpressionException.class)

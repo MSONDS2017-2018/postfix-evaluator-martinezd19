@@ -1,10 +1,9 @@
 package stack;
 
 /**
- * A {@link LinkedStack} is a stack that is implemented using a Linked List structure to allow for
- * unbounded size.
+ * A {@link LinkedStack} is a stack that is implemented using a {@link CustomArrayList}
  *
- * @param <T> the elements stored in the stack
+ * @param <T> the type of the elements stored in the stack
  */
 public class LinkedStack<T>
     implements StackInterface<T> {
