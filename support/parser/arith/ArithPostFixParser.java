@@ -37,7 +37,7 @@ import java.util.Scanner;
  * @author jcollard, jddevaug
  */
 public class ArithPostFixParser
-    extends AbstractExpressionParser
+    extends AbstractArithExpressionParser
     implements ExpressionParser<Integer> {
 
   public ArithPostFixParser(String exp) {

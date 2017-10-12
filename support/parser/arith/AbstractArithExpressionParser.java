@@ -9,14 +9,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public abstract class AbstractExpressionParser
+/**
+ * Abstract arithmetic expression parser. Subclasses must implement the {@code isParsable} method.
+ */
+public abstract class AbstractArithExpressionParser
     implements ExpressionParser<Integer> {
 
   protected static final Map<String, OperatorConstructor> operators;
 
   static {
     operators =
-        new HashMap<String, AbstractExpressionParser.OperatorConstructor>();
+        new HashMap<>();
 
     operators.put("+", new OperatorConstructor() {
 
@@ -67,8 +70,8 @@ public abstract class AbstractExpressionParser
     });
   }
 
-  private final String            expr;
-  private final Scanner           tokenizer;
+  private String            expr;
+  private Scanner           tokenizer;
   private       Operand<Integer>  nextOperand;
   private       Operator<Integer> nextOperator;
 
@@ -80,7 +83,7 @@ public abstract class AbstractExpressionParser
    * @throws NullPointerException if expr is null
    * @throws IllegalArgumentException if expr is no a valid arithmetic expression.
    */
-  public AbstractExpressionParser(String expr) {
+  public AbstractArithExpressionParser(String expr) {
     if (expr == null) {
       throw new NullPointerException("The expression must be non-null.");
     }
@@ -93,6 +96,20 @@ public abstract class AbstractExpressionParser
   }
 
   protected abstract boolean isParseable(String expr);
+
+//  public void setExpr(String expr) {
+//    if (expr == null) {
+//      throw new NullPointerException("The expression must be non-null.");
+//    }
+//    if (!isParseable(expr)) {
+//      throw new IllegalArgumentException("The string \"" + expr
+//          + "\" is not a valid ArithPostFix expression.");
+//    }
+//    this.expr = expr;
+//    this.tokenizer = new Scanner(this.expr);
+//    nextOperator = null;
+//    nextOperand = null;
+//  }
 
   /**
    * {@inheritDoc}.
