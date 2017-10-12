@@ -15,13 +15,13 @@ import java.util.Scanner;
 public abstract class AbstractArithExpressionParser
     implements ExpressionParser<Integer> {
 
-  protected static final Map<String, OperatorConstructor> operators;
+  protected static final Map<String, OperatorConstructor> OPERATORS;
 
   static {
-    operators =
+    OPERATORS =
         new HashMap<>();
 
-    operators.put("+", new OperatorConstructor() {
+    OPERATORS.put("+", new OperatorConstructor() {
 
       @Override
       public Operator<Integer> construct() {
@@ -29,7 +29,7 @@ public abstract class AbstractArithExpressionParser
       }
     });
 
-    operators.put("*", new OperatorConstructor() {
+    OPERATORS.put("*", new OperatorConstructor() {
 
       @Override
       public Operator<Integer> construct() {
@@ -37,7 +37,7 @@ public abstract class AbstractArithExpressionParser
       }
     });
 
-    operators.put("-", new OperatorConstructor() {
+    OPERATORS.put("-", new OperatorConstructor() {
 
       @Override
       public Operator<Integer> construct() {
@@ -45,7 +45,7 @@ public abstract class AbstractArithExpressionParser
       }
     });
 
-    operators.put("/", new OperatorConstructor() {
+    OPERATORS.put("/", new OperatorConstructor() {
 
       @Override
       public Operator<Integer> construct() {
@@ -53,7 +53,7 @@ public abstract class AbstractArithExpressionParser
       }
     });
 
-    operators.put("^", new OperatorConstructor() {
+    OPERATORS.put("^", new OperatorConstructor() {
 
       @Override
       public Operator<Integer> construct() {
@@ -61,7 +61,7 @@ public abstract class AbstractArithExpressionParser
       }
     });
 
-    operators.put("!", new OperatorConstructor() {
+    OPERATORS.put("!", new OperatorConstructor() {
 
       @Override
       public Operator<Integer> construct() {
@@ -97,20 +97,6 @@ public abstract class AbstractArithExpressionParser
 
   protected abstract boolean isParseable(String expr);
 
-//  public void setExpr(String expr) {
-//    if (expr == null) {
-//      throw new NullPointerException("The expression must be non-null.");
-//    }
-//    if (!isParseable(expr)) {
-//      throw new IllegalArgumentException("The string \"" + expr
-//          + "\" is not a valid ArithPostFix expression.");
-//    }
-//    this.expr = expr;
-//    this.tokenizer = new Scanner(this.expr);
-//    nextOperator = null;
-//    nextOperand = null;
-//  }
-
   /**
    * {@inheritDoc}.
    */
@@ -133,7 +119,7 @@ public abstract class AbstractArithExpressionParser
     } else if (tokenizer.hasNext()) {
       // Otherwise return the associated operator
       String token = tokenizer.next();
-      nextOperator = operators.get(token)
+      nextOperator = OPERATORS.get(token)
                               .construct();
     }
   }

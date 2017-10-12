@@ -56,7 +56,7 @@ public class ArithPostFixParser
       String token = s.next();
       // If we find a string that is not an operator
       // return false
-      if (!operators.containsKey(token)) {
+      if (!OPERATORS.containsKey(token)) {
         s.close();
         return false;
       }

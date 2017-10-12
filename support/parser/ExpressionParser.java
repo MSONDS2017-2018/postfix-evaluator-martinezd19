@@ -5,7 +5,7 @@ import language.Operator;
 
 /**
  * A {@link ExpressionParser} is used to parse post fix expressions made up of operands and
- * operators.
+ * OPERATORS.
  *
  * @param <T> - the type of data held in an operand
  *

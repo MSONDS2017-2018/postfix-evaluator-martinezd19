@@ -40,10 +40,10 @@ public class ArithInFixEvaluatorTest {
     assertEquals(Integer.valueOf(-1), result);
 
     result = evaluator.evaluate("1 - 2 - 3");
-    assertEquals(Integer.valueOf(2), result);
+    assertEquals(Integer.valueOf(-4), result);
 
     result = evaluator.evaluate("1000 - 100 - 10 - 1");
-    assertEquals(Integer.valueOf(909), result);
+    assertEquals(Integer.valueOf(889), result);
   }
 
   @Test(timeout = 5000)
@@ -83,6 +83,18 @@ public class ArithInFixEvaluatorTest {
   }
 
   @Test(timeout = 5000)
+  public void testEvaluateNegate() {
+    Integer result = evaluator.evaluate("! 1");
+    assertEquals(new Integer(-1), result);
+
+    result = evaluator.evaluate("! 2");
+    assertEquals(new Integer(-2), result);
+
+    result = evaluator.evaluate("! -15");
+    assertEquals(new Integer(15), result);
+  }
+
+  @Test(timeout = 5000)
   public void testOrderOfOperations() {
     Integer result = evaluator.evaluate("1 - 3 * 5");
     assertEquals(Integer.valueOf(-14), result);
@@ -94,7 +106,7 @@ public class ArithInFixEvaluatorTest {
     assertEquals(Integer.valueOf(1), result);
 
     result = evaluator.evaluate("1 ^ 3 * 5 ^ 2 - 8 + 4");
-    assertEquals(Integer.valueOf(13), result);
+    assertEquals(Integer.valueOf(21), result);
   }
 
   @Test(timeout = 5000, expected = IllegalPostFixExpressionException.class)
