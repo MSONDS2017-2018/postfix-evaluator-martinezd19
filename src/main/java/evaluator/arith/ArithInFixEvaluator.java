@@ -10,10 +10,8 @@ import stack.LinkedStack;
 import stack.StackInterface;
 
 /**
- * An {@link ArithPostFixEvaluator} is a in fix evaluator over simple arithmetic expressions.
- * The {@link ArithPostFixEvaluator} does not evaluate via normal PEMDAS. While operator
- * precedence does apply, successive OPERATORS with identical precedence are evaluated <b>from
- * right to left.</b>
+ * An {@link ArithInFixEvaluator} is a in-fix evaluator that takes +, -, *, /,
+ * and ! operators, as well as parenthesis.
  */
 public class ArithInFixEvaluator
     implements Expression<Integer> {
@@ -33,12 +31,28 @@ public class ArithInFixEvaluator
   }
 
   /**
-   * Evaluates a postfix expression.
+   * Evaluates a postfix expression including parenthesis. Each operation is
+   * truncated to an integer, so beware of division that produces a fractional
+   * answer (ex. "10 * (4 / 8)" evaluates to <b>0</b>, not <b>5</b>
+   *
+   * @param exp The string expression to be evaluated. Operators must have
+   *     spaces around them, only integer numbers are accepted, and
+   *     multiplication is not implied (ex. "5*7" is <b>NOT</b> valid. "5 (8 /
+   *     8)" is <b>NOT</b> valid. "20 / (2 * 2)" <b>IS</b> valid.
    *
    * @return the result
    */
   @Override
-  public final Integer evaluate(final String expr) {
+  public final Integer evaluate(final String exp) {
+    return parseParen(exp);
+  }
+
+  /**
+   * Evaluates a postfix expression.
+   *
+   * @return the result
+   */
+  private final Integer evalString(final String expr) {
 
     ArithInFixParser parser = new ArithInFixParser(expr);
     while (parser.hasNext()) {
@@ -108,6 +122,55 @@ public class ArithInFixEvaluator
     }
 
     return returnValue;
+  }
+
+  /**
+   * Fully parses an in-fix expression containing parentheses
+   *
+   * @param exp expression to be evaluated
+   *
+   * @return Integer representing answer
+   */
+  private final Integer parseParen(String exp) {
+    char[]  cArray         = exp.toCharArray();
+    int     counter        = 0;
+    int     startIndex     = 0;
+    boolean openParenFound = false;
+
+    // Loop through string and find top-level pair of parentheses
+    for (int i = 0; i < exp.length(); i++) {
+      switch (cArray[i]) {
+        case '(':
+          if (!openParenFound) {
+            openParenFound = true;
+            startIndex = i;
+          }
+          counter++;
+          break;
+        case ')':
+          if (openParenFound) {
+            if (--counter == 0) {
+              // Upon finding a top-level parenthetical expression, recurse and replace
+              // parenthetical with evaluated expression
+              String toSolve = exp.substring(startIndex + 1, i);
+              exp = new StringBuffer(exp).replace(startIndex,
+                  i + 1,
+                  parseParen(toSolve).toString())
+                                         .toString();
+            }
+          } else {
+            throw new IllegalPostFixExpressionException(
+                "Missing opening parenthesis");
+          }
+          break;
+      }
+    }
+
+    if (counter != 0) {
+      throw new IllegalPostFixExpressionException("Missing closing parenthesis");
+    }
+
+    return evalString(exp);
   }
 
 }

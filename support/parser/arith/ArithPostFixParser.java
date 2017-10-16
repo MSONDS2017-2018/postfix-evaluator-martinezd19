@@ -41,7 +41,7 @@ public class ArithPostFixParser
     implements ExpressionParser<Integer> {
 
   public ArithPostFixParser(String exp) {
-    super(exp);
+    super(exp.trim());
   }
 
   @Override

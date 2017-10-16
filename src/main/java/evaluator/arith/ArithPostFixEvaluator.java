@@ -10,7 +10,8 @@ import stack.LinkedStack;
 import stack.StackInterface;
 
 /**
- * An {@link ArithPostFixEvaluator} is a post fix evaluator over simple arithmetic expressions.
+ * An {@link ArithPostFixEvaluator} is a post fix evaluator over simple
+ * arithmetic expressions.
  */
 public class ArithPostFixEvaluator
     implements Expression<Integer> {
@@ -56,8 +57,9 @@ public class ArithPostFixEvaluator
           try {
             stack.push(op.performOperation());
           } catch (ExtremeOperandException e) {
-            System.out.println("Operands too large; result of operation totaled over " +
-                "Integer.MAX_VALUE");
+            System.out.println(
+                "Operands too large; result of operation totaled over " +
+                    "Integer.MAX_VALUE");
             return null;
           }
 

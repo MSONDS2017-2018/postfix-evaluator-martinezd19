@@ -4,7 +4,8 @@ import language.BinaryOperator;
 import language.Operand;
 
 /**
- * The {@code MultOperator} is an operator that performs multiplication on two integers.
+ * The {@code MultOperator} is an operator that performs multiplication on two
+ * integers.
  */
 public class MultOperator
     extends BinaryOperator<Integer> {

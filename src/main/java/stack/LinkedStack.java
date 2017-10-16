@@ -1,7 +1,8 @@
 package stack;
 
 /**
- * A {@link LinkedStack} is a stack that is implemented using a {@link CustomArrayList}
+ * A {@link LinkedStack} is a stack that is implemented using a {@link
+ * CustomArrayList}
  *
  * @param <T> the type of the elements stored in the stack
  */

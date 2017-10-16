@@ -4,7 +4,8 @@ import language.BinaryOperator;
 import language.Operand;
 
 /**
- * The {@code DivOperator} is an operator that performs division on two integers.
+ * The {@code DivOperator} is an operator that performs division on two
+ * integers.
  */
 public class DivOperator
     extends BinaryOperator<Integer> {

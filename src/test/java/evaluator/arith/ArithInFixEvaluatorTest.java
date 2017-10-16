@@ -109,6 +109,18 @@ public class ArithInFixEvaluatorTest {
     assertEquals(Integer.valueOf(21), result);
   }
 
+  @Test(timeout = 5000)
+  public void testParenthesis() {
+    Integer result = evaluator.evaluate("15 / (5 * 3)");
+    assertEquals(Integer.valueOf(1), result);
+
+    result = evaluator.evaluate("15 / (5 * 3) + 5 - 3");
+    assertEquals(Integer.valueOf(3), result);
+
+    result = evaluator.evaluate("5 ^ (50 / 25) * 2");
+    assertEquals(Integer.valueOf(50), result);
+  }
+
   @Test(timeout = 5000, expected = IllegalPostFixExpressionException.class)
   public void testInvalidExpression() {
     evaluator.evaluate("1 2");

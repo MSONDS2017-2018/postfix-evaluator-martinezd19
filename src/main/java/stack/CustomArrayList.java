@@ -1,8 +1,8 @@
 package stack;
 
 /**
- * {@link CustomArrayList} acts identical to {@link java.util.ArrayList}, but with less methods.
- * This is to avoid using the Java API (project requirement)
+ * {@link CustomArrayList} acts identical to {@link java.util.ArrayList}, but
+ * with less methods. This is to avoid using the Java API (project requirement)
  *
  * @param <T> the type of object for the array to hold
  */
@@ -63,15 +63,15 @@ public class CustomArrayList<T> {
   }
 
   /**
-   * Removes an object from the array with a given index. All elements in front of the removed
-   * element are shifted backwards.
+   * Removes an object from the array with a given index. All elements in front
+   * of the removed element are shifted backwards.
    *
    * @param index - index of object to be removed
    *
    * @return the removed object
    *
-   * @throws ArrayIndexOutOfBoundsException - if the given index is less than 0 or greater than
-   *     size()-1
+   * @throws ArrayIndexOutOfBoundsException - if the given index is less
+   *     than 0 or greater than size()-1
    */
   @SuppressWarnings("unchecked")
   public final T remove(final int index)
@@ -103,8 +103,8 @@ public class CustomArrayList<T> {
    *
    * @return object that was previously in given index in the array
    *
-   * @throws ArrayIndexOutOfBoundsException - if the given index is less than 0 or greater than
-   *     size()-1
+   * @throws ArrayIndexOutOfBoundsException - if the given index is less
+   *     than 0 or greater than size()-1
    */
   public final T set(final int index, final T o)
       throws ArrayIndexOutOfBoundsException {
@@ -124,8 +124,8 @@ public class CustomArrayList<T> {
    *
    * @return the object at the given index
    *
-   * @throws ArrayIndexOutOfBoundsException - if the given index is less than 0 or greater than
-   *     size()-1
+   * @throws ArrayIndexOutOfBoundsException - if the given index is less
+   *     than 0 or greater than size()-1
    */
   public final T get(final int index)
       throws ArrayIndexOutOfBoundsException {
@@ -137,7 +137,8 @@ public class CustomArrayList<T> {
   }
 
   /**
-   * Checks whether or not a given index is valid (false if invalid, true if valid).
+   * Checks whether or not a given index is valid (false if invalid, true if
+   * valid).
    *
    * @param index index to check
    *

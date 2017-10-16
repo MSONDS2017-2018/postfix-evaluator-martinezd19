@@ -4,7 +4,8 @@ import language.BinaryOperator;
 import language.Operand;
 
 /**
- * The {@code PlusOperator} is an operator that performs addition on two integers.
+ * The {@code PlusOperator} is an operator that performs addition on two
+ * integers.
  *
  * @author jcollard, jddevaug
  */

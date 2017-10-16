@@ -4,7 +4,8 @@ import language.BinaryOperator;
 import language.Operand;
 
 /**
- * The {@code SubOperator} is an operator that performs subtraction on two integers.
+ * The {@code SubOperator} is an operator that performs subtraction on two
+ * integers.
  */
 public class SubOperator
     extends BinaryOperator<Integer> {

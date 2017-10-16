@@ -9,7 +9,7 @@ public class MainEvaluator {
   public static void main(String[] args) {
     Scanner in = new Scanner(System.in);
 
-    while(true) {
+    while (true) {
       System.out.println("Enter P for postfix or I for infix, E to exit:");
       String line = in.nextLine();
       switch (line.toLowerCase()) {
