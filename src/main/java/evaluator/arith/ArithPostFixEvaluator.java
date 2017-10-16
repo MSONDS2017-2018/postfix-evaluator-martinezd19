@@ -57,8 +57,7 @@ public class ArithPostFixEvaluator
             stack.push(op.performOperation());
           } catch (ExtremeOperandException e) {
             System.out.println(
-                "Operands too large; result of operation totaled over " +
-                    "Integer.MAX_VALUE");
+                "Operands too large; result of operation totaled over Integer.MAX_VALUE");
             return null;
           }
 
