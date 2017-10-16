@@ -1,8 +1,8 @@
 package parser.arith;
 
-import parser.ExpressionParser;
-
 import java.util.Scanner;
+
+import parser.ExpressionParser;
 
 /**
  * <p> An {@code ArithPostFixParser} is a post fix parser for arithmetic expressions. </p> <p> You

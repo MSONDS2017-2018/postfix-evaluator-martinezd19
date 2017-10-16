@@ -4,8 +4,7 @@ import language.BinaryOperator;
 import language.Operand;
 
 /**
- * The {@code ExponentOperator} is an operator that performs exponentiation on
- * two integers.
+ * The {@code ExponentOperator} is an operator that performs exponentiation on two integers.
  */
 public class ExponentOperator
     extends BinaryOperator<Integer> {

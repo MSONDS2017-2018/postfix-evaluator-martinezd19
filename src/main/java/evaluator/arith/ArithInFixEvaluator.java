@@ -10,14 +10,14 @@ import stack.LinkedStack;
 import stack.StackInterface;
 
 /**
- * An {@link ArithInFixEvaluator} is a in-fix evaluator that takes +, -, *, /,
- * and ! operators, as well as parenthesis.
+ * An {@link ArithInFixEvaluator} is a in-fix evaluator that takes +, -, *, /, and ! operators, as
+ * well as parenthesis.
  */
 public class ArithInFixEvaluator
     implements Expression<Integer> {
 
   /**
-   * Stack for use with infix evaluator
+   * Stacks for use with infix evaluator.
    */
   private final StackInterface<Operand<Integer>>  oprStack;
   private final StackInterface<Operator<Integer>> optStack;
@@ -31,14 +31,13 @@ public class ArithInFixEvaluator
   }
 
   /**
-   * Evaluates a postfix expression including parenthesis. Each operation is
-   * truncated to an integer, so beware of division that produces a fractional
-   * answer (ex. "10 * (4 / 8)" evaluates to <b>0</b>, not <b>5</b>
+   * Evaluates a postfix expression including parenthesis. Each operation is truncated to an
+   * integer, so beware of division that produces a fractional answer (ex. "10 * (4 / 8)" evaluates
+   * to <b>0</b>, not <b>5</b>
    *
-   * @param exp The string expression to be evaluated. Operators must have
-   *     spaces around them, only integer numbers are accepted, and
-   *     multiplication is not implied (ex. "5*7" is <b>NOT</b> valid. "5 (8 /
-   *     8)" is <b>NOT</b> valid. "20 / (2 * 2)" <b>IS</b> valid.
+   * @param exp The string expression to be evaluated. Operators must have spaces around them,
+   *     only integer numbers are accepted, and multiplication is not implied (ex. "5*7" is
+   *     <b>NOT</b> valid. "5 (8 / 8)" is <b>NOT</b> valid. "20 / (2 * 2)" <b>IS</b> valid.
    *
    * @return the result
    */
@@ -125,7 +124,7 @@ public class ArithInFixEvaluator
   }
 
   /**
-   * Fully parses an in-fix expression containing parentheses
+   * Fully parses an in-fix expression containing parentheses.
    *
    * @param exp expression to be evaluated
    *

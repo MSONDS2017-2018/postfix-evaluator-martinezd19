@@ -2,12 +2,18 @@ package parser.arith;
 
 import language.Operand;
 import language.Operator;
-import language.arith.*;
-import parser.ExpressionParser;
+import language.arith.DivOperator;
+import language.arith.ExponentOperator;
+import language.arith.MultOperator;
+import language.arith.NegateOperator;
+import language.arith.PlusOperator;
+import language.arith.SubOperator;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+
+import parser.ExpressionParser;
 
 /**
  * Abstract arithmetic expression parser. Subclasses must implement the {@code isParsable} method.
@@ -72,8 +78,8 @@ public abstract class AbstractArithExpressionParser
 
   private String            expr;
   private Scanner           tokenizer;
-  private       Operand<Integer>  nextOperand;
-  private       Operator<Integer> nextOperator;
+  private Operand<Integer>  nextOperand;
+  private Operator<Integer> nextOperator;
 
   /**
    * Creates an {@link ArithPostFixParser} over {@code expr}.

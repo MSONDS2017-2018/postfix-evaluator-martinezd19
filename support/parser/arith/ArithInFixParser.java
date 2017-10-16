@@ -7,7 +7,8 @@ public class ArithInFixParser
     implements ExpressionParser<Integer> {
 
   public ArithInFixParser(String exp) {
-    super(exp.replace(" - ", " + -").trim());
+    super(exp.replace(" - ", " + -")
+             .trim());
   }
 
   @Override

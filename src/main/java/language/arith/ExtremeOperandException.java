@@ -1,8 +1,8 @@
 package language.arith;
 
 /**
- * An {@code ExtremeOperandException} is thrown at runtime when the operands of
- * an operation cause the value to exceed the max value of an int
+ * An {@code ExtremeOperandException} is thrown at runtime when the operands of an operation cause
+ * the value to exceed the max value of an int
  */
 public class ExtremeOperandException
     extends Exception {

@@ -4,8 +4,7 @@ import language.Operand;
 import language.UnaryOperator;
 
 /**
- * The {@code NegateOperator} is an operator that performs negation on a single
- * integer
+ * The {@code NegateOperator} is an operator that performs negation on a single integer
  *
  * @author jcollard, jddevaug
  */
