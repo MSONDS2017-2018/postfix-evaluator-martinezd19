@@ -1,12 +1,13 @@
 package stack;
 
 /**
- * A {@link StackUnderflowException} is thrown at runtime when an operation that would
- * return or manipulate the top most element of a stack that is empty is called.
- * @author jcollard, jddevaug
+ * A {@link StackUnderflowException} is thrown at runtime when an operation that would return or
+ * manipulate the top most element of a stack that is empty is called.
  *
+ * @author jcollard, jddevaug
  */
-public class StackUnderflowException extends RuntimeException {
+public class StackUnderflowException
+    extends RuntimeException {
 
   private static final long serialVersionUID = 1L;
 

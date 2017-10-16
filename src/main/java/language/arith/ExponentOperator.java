@@ -4,18 +4,18 @@ import language.BinaryOperator;
 import language.Operand;
 
 /**
- * The {@code MultOperator} is an operator that performs multiplication on two integers.
+ * The {@code ExponentOperator} is an operator that performs exponentiation on two integers.
  */
-public class MultOperator
+public class ExponentOperator
     extends BinaryOperator<Integer> {
 
   @Override
   public int getPrecendence() {
-    return 1;
+    return 2;
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   @Override
   public final Operand<Integer> performOperation()
@@ -26,7 +26,7 @@ public class MultOperator
       throw new IllegalStateException(
           "Could not perform operation prior to operands being set.");
     }
-    Integer result = op0.getValue() * op1.getValue();
+    Integer result = (int) Math.pow(op0.getValue(), op1.getValue());
 
     if (result == Integer.MAX_VALUE) {
       throw new ExtremeOperandException();
@@ -34,4 +34,5 @@ public class MultOperator
 
     return new Operand<Integer>(result);
   }
+
 }

@@ -1,18 +1,18 @@
 package language.arith;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import language.Operand;
 import language.Operator;
-
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 public class DivOperatorTest {
+
   Operator<Integer> operator;
-  Operand<Integer> op0;
-  Operand<Integer> op1;
+  Operand<Integer>  op0;
+  Operand<Integer>  op1;
 
   /**
    * Runs before each test.
@@ -24,77 +24,86 @@ public class DivOperatorTest {
     op1 = new Operand<Integer>(7);
   }
 
-  @Test (timeout = 5000)
-  public void testPerformOperation() {
+  @Test(timeout = 5000)
+  public void testPerformOperation()
+      throws ExtremeOperandException {
     operator.setOperand(0, op0);
     operator.setOperand(1, op1);
 
     Operand<Integer> result = operator.performOperation();
-    int value = result.getValue();
-    assertEquals("Operator applied to 5 and 7 should produce 0.", 0,  value);
+    int              value  = result.getValue();
+    assertEquals("Operator applied to 5 and 7 should produce 0.", 0, value);
   }
 
-  @Test (timeout = 5000)
-  public void testPerformOperationPositiveNumbers() {
+  @Test(timeout = 5000)
+  public void testPerformOperationPositiveNumbers()
+      throws ExtremeOperandException {
     operator.setOperand(0, new Operand<Integer>(12));
     operator.setOperand(1, new Operand<Integer>(4));
 
     Operand<Integer> result = operator.performOperation();
-    int value = result.getValue();
-    assertEquals("Operator applied to 12 and 4 should produce 3.", 3,  value);
+    int              value  = result.getValue();
+    assertEquals("Operator applied to 12 and 4 should produce 3.", 3,
+        value);
   }
 
-  @Test (timeout = 5000)
-  public void testPerformOperationNegativeNumbers() {
+  @Test(timeout = 5000)
+  public void testPerformOperationNegativeNumbers()
+      throws ExtremeOperandException {
     operator.setOperand(0, new Operand<Integer>(-20));
     operator.setOperand(1, new Operand<Integer>(-5));
 
     Operand<Integer> result = operator.performOperation();
-    int value = result.getValue();
-    assertEquals("Operator applied to -20 and -5 should produce 4.", 4,  value);
+    int              value  = result.getValue();
+    assertEquals("Operator applied to -20 and -5 should produce 4.", 4,
+        value);
   }
 
-  @Test (timeout = 5000)
-  public void testPerformOperationNegativeResult() {
+  @Test(timeout = 5000)
+  public void testPerformOperationNegativeResult()
+      throws ExtremeOperandException {
     operator.setOperand(0, new Operand<Integer>(-20));
     operator.setOperand(1, new Operand<Integer>(5));
 
     Operand<Integer> result = operator.performOperation();
-    int value = result.getValue();
-    assertEquals("Operator applied to -20 and 5 should produce -4.", -4,  value);
+    int              value  = result.getValue();
+    assertEquals("Operator applied to -20 and 5 should produce -4.", -4,
+        value);
   }
 
-  @Test (timeout = 5000, expected = IllegalArgumentException.class)
+  @Test(timeout = 5000, expected = IllegalArgumentException.class)
   public void testIllegalArgumentException() {
     operator.setOperand(2, op0);
     fail("Binary operator should not except input to position 2");
   }
 
-  @Test (timeout = 5000)
+  @Test(timeout = 5000)
   public void testGetNumberOfArguments() {
-    assertEquals("Binary operator should have 2 arguments.", operator.getNumberOfArguments(), 2);
+    assertEquals("Binary operator should have 2 arguments.",
+        operator.getNumberOfArguments(), 2);
   }
 
-  @Test (timeout = 5000, expected = NullPointerException.class)
+  @Test(timeout = 5000, expected = NullPointerException.class)
   public void testNullArgumentException() {
     operator.setOperand(0, null);
     fail("Operator should not allow null arguments");
   }
 
-  @Test (timeout = 5000, expected = IllegalStateException.class)
+  @Test(timeout = 5000, expected = IllegalStateException.class)
   public void testIllegalStateException() {
     operator.setOperand(0, new Operand<Integer>(5));
     operator.setOperand(0, new Operand<Integer>(12));
     fail("Operator should not allow the same operand position to be set more than once");
   }
 
-  @Test (timeout = 5000, expected = IllegalStateException.class)
-  public void testIllegalStateExceptionPerform() {
+  @Test(timeout = 5000, expected = IllegalStateException.class)
+  public void testIllegalStateExceptionPerform()
+      throws ExtremeOperandException {
     operator.performOperation();
     fail("Operator should not compute when all arguments have not been set.");
   }
 
-  @Test (timeout = 5000, expected = IllegalStateException.class)
+  @Test(timeout = 5000, expected = IllegalStateException.class)
   public void testIllegalStateExceptionZeroDenominator() {
     operator.setOperand(1, new Operand<Integer>(0));
     fail("Operator should not allow the denominator to be set to zero");

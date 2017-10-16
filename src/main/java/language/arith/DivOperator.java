@@ -1,63 +1,46 @@
 package language.arith;
 
+import language.BinaryOperator;
 import language.Operand;
-import language.Operator;
 
 /**
- * The {@link DivOperator} is an operator that performs division on two
- * integers.
- * @author jcollard, jddevaug
- *
+ * The {@code DivOperator} is an operator that performs division on two integers.
  */
-public class DivOperator implements Operator<Integer> {
+public class DivOperator
+    extends BinaryOperator<Integer> {
 
-  //TODO Before you get started, have you looked at the
-  // PlusOperator class? You'll notice that it is taking advantage
-  // of the abstract BinaryOperator class. Take a moment to
-  // also look at that class. Finally, you should implement
-  // this class.
-
-
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public int getNumberOfArguments() {
-    //TODO Before you get started, have you looked at the
-    // PlusOperator class? You'll notice that it is taking advantage
-    // of the abstract BinaryOperator class. Take a moment to
-    // also look at that class. Finally, you should implement
-    // this class.
-
-    return 0;
+  public int getPrecendence() {
+    return 1;
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   @Override
-  public Operand<Integer> performOperation() {
-    //TODO Before you get started, have you looked at the
-    // PlusOperator class? You'll notice that it is taking advantage
-    // of the abstract BinaryOperator class. Take a moment to
-    // also look at that class. Finally, you should implement
-    // this class.
+  public final Operand<Integer> performOperation()
+      throws ExtremeOperandException {
+    Operand<Integer> op0 = this.getOp0();
+    Operand<Integer> op1 = this.getOp1();
+    if (op0 == null || op1 == null) {
+      throw new IllegalStateException(
+          "Could not perform operation prior to operands being set.");
+    }
+    Integer result = op0.getValue() / op1.getValue();
 
-    return null;
+    if (result == Integer.MAX_VALUE) {
+      throw new ExtremeOperandException();
+    }
+
+    return new Operand<Integer>(result);
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public void setOperand(int i, Operand<Integer> operand) {
-    //TODO Before you get started, have you looked at the
-    // PlusOperator class? You'll notice that it is taking advantage
-    // of the abstract BinaryOperator class. Take a moment to
-    // also look at that class. Finally, you should implement
-    // this class.
-
-
+  public final void setOperand(final int i, final Operand<Integer> operand) {
+    if (i == 1 && operand.getValue() == 0) {
+      throw new IllegalStateException(
+          "Op1 of DivOperator cannot be set to 0");
+    }
+    super.setOperand(i, operand);
   }
-
 }

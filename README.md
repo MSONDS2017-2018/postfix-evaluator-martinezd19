@@ -44,7 +44,7 @@ It is not important that you understand how the support code is implemented but 
 **language.Operator**<br>
 **language.Operand**<br>
 **language.BinaryOperator**<br>
-**evaluator.PostFixEvaluator**<br>
+**evaluator.Expression**<br>
 
 
 ## Part One: Importing Project into Eclipse
@@ -180,7 +180,7 @@ Expression: 3 * 4 ^ 2 + 5
 
 ### Using the ArithPostFixParser
 
-You have been provided with a class for parsing arithmetic postfix expressions. It is not important that you understand how it is implemented but it is important that you understand what the interface provides for you. Read over the comments in the **parser.PostFixParser** interface carefully.
+You have been provided with a class for parsing arithmetic postfix expressions. It is not important that you understand how it is implemented but it is important that you understand what the interface provides for you. Read over the comments in the **parser.ExpressionParser** interface carefully.
 
 A short example of its use can be found in **parser.arith.ArithPostFixParserExample**
 

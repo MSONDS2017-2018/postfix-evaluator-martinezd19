@@ -1,20 +1,20 @@
 package language;
 
 /**
- * A {@link BinaryOperator} is an {@link Operator} that performs an
- * operation on two arguments.
- * @author jcollard, jddevaug
+ * A {@link BinaryOperator} is an {@link Operator} that performs an operation on two arguments.
  *
- * @param <T> they type of the {@link Operand} being evaluated
+ * @param <T> the type of the {@link Operand} being evaluated
+ *
+ * @author jcollard, jddevaug
  */
-public abstract class BinaryOperator<T> implements Operator<T> {
+public abstract class BinaryOperator<T>
+    implements Operator<T> {
 
   private Operand<T> op0;
   private Operand<T> op1;
 
   /**
    * Returns the number of arguments.
-   * @ return 2
    */
   @Override
   public final int getNumberOfArguments() {
@@ -30,17 +30,20 @@ public abstract class BinaryOperator<T> implements Operator<T> {
       throw new NullPointerException("Could not set null operand.");
     }
     if (i > 1) {
-      throw new IllegalArgumentException("Binary operator only accepts operands 0 and 1 "
-                                          + "but recieved " + i + ".");
+      throw new IllegalArgumentException(
+          "Binary operator only accepts operands 0 and 1 "
+              + "but recieved " + i + ".");
     }
     if (i == 0) {
       if (op0 != null) {
-        throw new IllegalStateException("Position " + i + " has been previously set.");
+        throw new IllegalStateException(
+            "Position " + i + " has been previously set.");
       }
       op0 = operand;
     } else {
       if (op1 != null) {
-        throw new IllegalStateException("Position " + i + " has been previously set.");
+        throw new IllegalStateException(
+            "Position " + i + " has been previously set.");
       }
       op1 = operand;
     }
@@ -48,6 +51,7 @@ public abstract class BinaryOperator<T> implements Operator<T> {
 
   /**
    * Returns the first operand.
+   *
    * @return the first operand
    */
   public Operand<T> getOp0() {
@@ -56,6 +60,7 @@ public abstract class BinaryOperator<T> implements Operator<T> {
 
   /**
    * Returns the second operand.
+   *
    * @return the second operand
    */
   public Operand<T> getOp1() {

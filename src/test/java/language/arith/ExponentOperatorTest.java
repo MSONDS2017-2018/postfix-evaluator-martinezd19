@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-public class PlusOperatorTest {
+public class ExponentOperatorTest {
 
   private Operator<Integer> operator;
   private Operand<Integer>  op0;
@@ -19,9 +19,9 @@ public class PlusOperatorTest {
    */
   @Before
   public void setup() {
-    operator = new PlusOperator();
+    operator = new ExponentOperator();
     op0 = new Operand<Integer>(5);
-    op1 = new Operand<Integer>(7);
+    op1 = new Operand<Integer>(3);
   }
 
   @Test(timeout = 5000)
@@ -32,8 +32,54 @@ public class PlusOperatorTest {
 
     Operand<Integer> result = operator.performOperation();
     int              value  = result.getValue();
-    assertEquals("Operator applied to 5 and 7 should produce 11.", 5 + 7,
+    assertEquals("Operator applied to 5 and 3 should produce 125.", 125,
         value);
+  }
+
+  /**
+   * Ensure that operator does not crash on greater than int values
+   */
+  @Test(timeout = 5000, expected = ExtremeOperandException.class)
+  public void testLargeOperation()
+      throws ExtremeOperandException {
+    operator.setOperand(0, new Operand<Integer>(10));
+    operator.setOperand(1, new Operand<Integer>(15));
+
+    Operand<Integer> result = operator.performOperation();
+    int              value  = result.getValue();
+  }
+
+  @Test(timeout = 5000)
+  public void testNegativeBase()
+      throws ExtremeOperandException {
+    operator.setOperand(0, new Operand<Integer>(-5));
+    operator.setOperand(1, new Operand<Integer>(2));
+
+    Operand<Integer> result = operator.performOperation();
+    int              value  = result.getValue();
+    assertEquals("Operator applied to -5 and 2 should be 25", 25, value);
+  }
+
+  @Test(timeout = 5000)
+  public void testNegativeBase2()
+      throws ExtremeOperandException {
+    operator.setOperand(0, new Operand<Integer>(-5));
+    operator.setOperand(1, new Operand<Integer>(3));
+
+    Operand<Integer> result = operator.performOperation();
+    int              value  = result.getValue();
+    assertEquals("Operator applied to -5 and 3 should be -125", -125, value);
+  }
+
+  @Test(timeout = 5000)
+  public void testNegativePower()
+      throws ExtremeOperandException {
+    operator.setOperand(0, new Operand<Integer>(5));
+    operator.setOperand(1, new Operand<Integer>(-2));
+
+    Operand<Integer> result = operator.performOperation();
+    int              value  = result.getValue();
+    assertEquals("Operator applied to 5 and -2 should be 0", 0, value);
   }
 
   @Test(timeout = 5000)

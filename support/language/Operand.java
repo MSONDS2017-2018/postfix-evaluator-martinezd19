@@ -2,9 +2,10 @@ package language;
 
 /**
  * An {@link Operand} is a wrapper around a value.
- * @author jcollard, jddevaug
  *
  * @param <T> the type of the stored data
+ *
+ * @author jcollard, jddevaug
  */
 public class Operand<T> {
 
@@ -12,6 +13,7 @@ public class Operand<T> {
 
   /**
    * Creates an {@link Operand} with the specified value.
+   *
    * @param value the value to be wrapped
    */
   public Operand(T value) {
@@ -20,6 +22,7 @@ public class Operand<T> {
 
   /**
    * Returns the concrete value stored in this {@link Operand}.
+   *
    * @return the concrete value stored in this {@link Operand}
    */
   public T getValue() {
